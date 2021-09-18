@@ -1,0 +1,90 @@
+<<<---fijar un breakpoint en main--->>>
+Breakpoint 1 at 0x401000
+
+Breakpoint 1, 0x0000000000401000 in _start ()
+<<<---¿Donde estamos?--->>>
+Dump of assembler code for function _start:
+=> 0x0000000000401000 <+0>:	mov    r9d,0x0
+   0x0000000000401006 <+6>:	mov    r13d,0xa
+   0x000000000040100c <+12>:	mov    r12d,0x1
+   0x0000000000401012 <+18>:	mov    rax,QWORD PTR ds:0x40202b
+   0x000000000040101a <+26>:	mov    r10,rax
+End of assembler dump.
+Breakpoint 2 at 0x40101d
+
+Breakpoint 2, 0x000000000040101d in resto ()
+<<<---Verificamos que el numero se paso correctamente--->>>
+rax            0x9e89              40585
+<<<---Verificamos como va operando, rdx contiene el resto--->>>
+<<<---Al que ira calculando el factorial--->>>
+rdx            0x0                 0
+<<<---Este se quedara con el cociente del numero--->>>
+rax            0x9e89              40585
+0x0000000000401026 in resto ()
+<<<---Vemos como se va calculando el factorial--->>>
+rax            0x9e89              40585
+<<<---Verificacion general--->>>
+rax            0x9e89              40585
+rbx            0x0                 0
+rcx            0x0                 0
+rdx            0x0                 0
+rsi            0x0                 0
+rdi            0x0                 0
+rbp            0x0                 0x0
+rsp            0x7fffffffe060      0x7fffffffe060
+r8             0x0                 0
+r9             0x0                 0
+r10            0x9e89              40585
+r11            0x0                 0
+r12            0x1                 1
+r13            0xa                 10
+r14            0x9e89              40585
+r15            0x0                 0
+rip            0x401026            0x401026 <resto+9>
+eflags         0x202               [ IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+<<<---Vemos si el factorial de cada numero se suma correctamente--->>>
+<<<---Suma de factoriales de cada digito--->>>
+r9             0x0                 0
+<<<---Verificacion reasignacion de rax para que continue diviendo--->>>
+rax            0x9e89              40585
+40585 
+<<<------>>>
+<<<---Mostramos--->>>
+$1 = 40585
+$2 = 0
+
+Breakpoint 2, 0x000000000040101d in resto ()
+$3 = 4058
+$4 = 120
+
+Breakpoint 2, 0x000000000040101d in resto ()
+$5 = 405
+$6 = 40440
+
+Breakpoint 2, 0x000000000040101d in resto ()
+$7 = 40
+$8 = 40560
+
+Breakpoint 2, 0x000000000040101d in resto ()
+$9 = 4
+$10 = 40561
+
+Breakpoint 2, 0x000000000040101d in resto ()
+Breakpoint 3 at 0x4010b3
+
+Breakpoint 3, 0x00000000004010b3 in exit ()
+<<<---Vemos la respuesta en r9--->>>
+r9             0x9e89              40585
+<<<---Vemos si se guardo en memoria T o F--->>>
+$11 = 84 'T'
+A debugging session is active.
+
+	Inferior 1 [process 4971] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]

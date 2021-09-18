@@ -1,0 +1,95 @@
+<<<---fijar un breakpoint en main--->>>
+Breakpoint 1 at 0x401000
+
+Breakpoint 1, 0x0000000000401000 in _start ()
+Breakpoint 2 at 0x40103a
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+<<<---Verificamos que las direcciones se hayan pasado bien--->>>
+rax            0x40201d            4202525
+rbx            0x402025            4202533
+0x0000000000401043 in vuelta ()
+<<<---Vemos que los caracteres se pasen bien--->>>
+<<<---Palabra sin voltear--->>>
+r9             0x72                114
+<<<---Palabra volteada--->>>
+r10            0x72                114
+<<<---Si es que la palbra es igual o no revisamos las coincidencias--->>>
+r11            0x0                 0
+Breakpoint 3 at 0x40105c
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+1 
+<<<------>>>
+<<<---Mostramos--->>>
+eax            0x40201e            4202526
+$1 = 1
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x40201f            4202527
+$2 = 2
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x402020            4202528
+$3 = 3
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x402021            4202529
+$4 = 4
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x402022            4202530
+$5 = 5
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x402023            4202531
+$6 = 6
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x402024            4202532
+$7 = 7
+
+Breakpoint 2, 0x000000000040103a in vuelta ()
+eax            0x402025            4202533
+$8 = 8
+
+Breakpoint 3, 0x000000000040105c in verificar ()
+<<<---Verificamos el valor de r15 que contiene la longitud de la cadena--->>>
+r15            0x9                 9
+<<<---Verificamos las coincidencias--->>>
+r11            0x9                 9
+<<<---Revision general de registros--->>>
+rax            0x402026            4202534
+rbx            0x40201c            4202524
+rcx            0x9                 9
+rdx            0x0                 0
+rsi            0x0                 0
+rdi            0x0                 0
+rbp            0x0                 0x0
+rsp            0x7fffffffe060      0x7fffffffe060
+r8             0x0                 0
+r9             0x72                114
+r10            0x72                114
+r11            0x9                 9
+r12            0x9                 9
+r13            0x0                 0
+r14            0x0                 0
+r15            0x9                 9
+rip            0x40105c            0x40105c <verificar>
+eflags         0x246               [ PF ZF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+Breakpoint 4 at 0x4010bb
+
+Breakpoint 4, 0x00000000004010bb in exit ()
+<<<---Mostramos lo que se guarda en la memoria--->>>
+$9 = 84 'T'
+A debugging session is active.
+
+	Inferior 1 [process 3486] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]
