@@ -1,0 +1,157 @@
+<<<---fijar un breakpoint en comienzo--->>>
+Breakpoint 1 at 0x401000
+
+Breakpoint 1, 0x0000000000401000 in _start ()
+<<<---¿Donde estamos?--->>>
+Dump of assembler code for function _start:
+=> 0x0000000000401000 <+0>:	mov    rbx,QWORD PTR [rip+0xff9]        # 0x402000 <a>
+   0x0000000000401007 <+7>:	mov    rcx,QWORD PTR [rip+0xffa]        # 0x402008 <N>
+   0x000000000040100e <+14>:	cmp    rbx,0x0
+   0x0000000000401012 <+18>:	jl     0x401085 <no_cumple>
+   0x0000000000401014 <+20>:	cmp    rcx,0x0
+   0x0000000000401018 <+24>:	jl     0x401085 <no_cumple>
+   0x000000000040101a <+26>:	cmp    rbx,0xff
+   0x0000000000401021 <+33>:	jg     0x401085 <no_cumple>
+   0x0000000000401023 <+35>:	cmp    rcx,0xff
+   0x000000000040102a <+42>:	jg     0x401085 <no_cumple>
+   0x000000000040102c <+44>:	mov    eax,0x1
+   0x0000000000401031 <+49>:	mov    r10,rbx
+   0x0000000000401034 <+52>:	mov    r11,rcx
+   0x0000000000401037 <+55>:	mov    r12,rbx
+   0x000000000040103a <+58>:	mov    r13,rcx
+   0x000000000040103d <+61>:	mov    r15d,0x0
+   0x0000000000401043 <+67>:	inc    rcx
+End of assembler dump.
+<<<---Verificamos que las variables pasaron su valor correctamente--->>>
+0x000000000040100e in _start ()
+<<<---Las guardamos en los registros siguientes--->>>
+rbx            0x5                 5
+rcx            0x2                 2
+<<<---Saltamos a las operaciones--->>>
+Breakpoint 2 at 0x401046
+
+Breakpoint 2, 0x0000000000401046 in vuelta ()
+
+Breakpoint 2, 0x0000000000401046 in vuelta ()
+<<<---Vemos como van operando nuestros registros--->>>
+<<<---r9 = N--->>>
+r9             0x3                 3
+<<<---rax = a * rax, es el a^(n+1)--->>>
+rax            0x5                 5
+
+Breakpoint 2, 0x0000000000401046 in vuelta ()
+Dump of assembler code for function vuelta:
+=> 0x0000000000401046 <+0>:	mov    r9,rcx
+   0x0000000000401049 <+3>:	mul    rbx
+   0x000000000040104c <+6>:	loop   0x401046 <vuelta>
+   0x000000000040104e <+8>:	sub    rax,r10
+   0x0000000000401051 <+11>:	mov    r11,rax
+   0x0000000000401054 <+14>:	dec    r10
+   0x0000000000401057 <+17>:	cdq    
+   0x0000000000401058 <+18>:	div    r10
+   0x000000000040105b <+21>:	mov    r10,rax
+   0x000000000040105e <+24>:	mov    rcx,r13
+   0x0000000000401061 <+27>:	mov    r14d,0x0
+End of assembler dump.
+<<<---Vemos como se va calculando correctamente a^(n+1)--->>>
+rax            0x19                25
+<<<---Verificamos las otras funciones viendo todos los registros--->>>
+rax            0x19                25
+rbx            0x5                 5
+rcx            0x1                 1
+rdx            0x0                 0
+rsi            0x0                 0
+rdi            0x0                 0
+rbp            0x0                 0x0
+rsp            0x7fffffffe070      0x7fffffffe070
+r8             0x0                 0
+r9             0x2                 2
+r10            0x5                 5
+r11            0x2                 2
+r12            0x5                 5
+r13            0x2                 2
+r14            0x0                 0
+r15            0x0                 0
+rip            0x401046            0x401046 <vuelta>
+eflags         0x206               [ PF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+0x0000000000401058 in vuelta ()
+Dump of assembler code for function vuelta:
+   0x0000000000401046 <+0>:	mov    r9,rcx
+   0x0000000000401049 <+3>:	mul    rbx
+   0x000000000040104c <+6>:	loop   0x401046 <vuelta>
+   0x000000000040104e <+8>:	sub    rax,r10
+   0x0000000000401051 <+11>:	mov    r11,rax
+   0x0000000000401054 <+14>:	dec    r10
+   0x0000000000401057 <+17>:	cdq    
+=> 0x0000000000401058 <+18>:	div    r10
+   0x000000000040105b <+21>:	mov    r10,rax
+   0x000000000040105e <+24>:	mov    rcx,r13
+   0x0000000000401061 <+27>:	mov    r14d,0x0
+End of assembler dump.
+<<<---a^(n+1)--->>>
+rax            0x78                120
+0x000000000040105e in vuelta ()
+<<<---Verificamos el resultado--->>>
+<<<---TERMINO DERECHO--->>>
+r10            0x1e                30
+<<<---Pasamos a la sumatoria de la izquierda--->>>
+Breakpoint 3 at 0x401067
+
+Breakpoint 3, 0x0000000000401067 in suma ()
+Breakpoint 4 at 0x40106c
+
+Breakpoint 4, 0x000000000040106c in continuo_suma ()
+r15            0x5                 5
+<<<---Verificamos que i avance correctamente--->>>
+r14            0x1                 1
+
+Breakpoint 3, 0x0000000000401067 in suma ()
+<<<---Verificamos que i avance correctamente--->>>
+r14            0x1                 1
+<<<---Verificamos que a^i se halle corectamente--->>>
+rax            0x5                 5
+<<<---Vemos si se estan sumando bien los a^i--->>>
+r15            0x5                 5
+<<<---Verificacion general de todos los registros--->>>
+rax            0x5                 5
+rbx            0x5                 5
+rcx            0x0                 0
+rdx            0x0                 0
+rsi            0x0                 0
+rdi            0x0                 0
+rbp            0x0                 0x0
+rsp            0x7fffffffe070      0x7fffffffe070
+r8             0x0                 0
+r9             0x1                 1
+r10            0x1e                30
+r11            0x78                120
+r12            0x5                 5
+r13            0x2                 2
+r14            0x1                 1
+r15            0x5                 5
+rip            0x401067            0x401067 <suma>
+eflags         0x297               [ CF PF AF SF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+Breakpoint 5 at 0x40108a
+
+Breakpoint 4, 0x000000000040106c in continuo_suma ()
+<<<---Una vez estamos al final revisamos la respuesta--->>>
+<<<---Verificamos el resultado--->>>
+<<<---TERMINO IZQUIERDO--->>>
+r15            0x1e                30
+A debugging session is active.
+
+	Inferior 1 [process 2721] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]
